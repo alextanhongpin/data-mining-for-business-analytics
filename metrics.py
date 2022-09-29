@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, accuracy_score, confusion_matrix, classification_report
 
 def adjusted_r2_score(y_true, y_pred, model):
     """ calculate adjusted R2
@@ -48,3 +48,13 @@ def BIC_score(y_true, y_pred, model=None, df=None):
     p = len(model.coef_) + 1 if df is None else df
     n = len(y_pred)
     return aic - 2 * (p + 1) + math.log(n) * (p + 1)
+
+
+def classification_summary(*, y_true, y_pred):
+    print("Accuracy:", accuracy_score(y_true, y_pred))
+    print()
+    print("Confusion matrix:")
+    print(confusion_matrix(y_true, y_pred))
+    print()
+    print("Classification report:")
+    print(classification_report(y_true, y_pred))
