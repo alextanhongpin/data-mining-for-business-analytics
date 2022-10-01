@@ -50,7 +50,7 @@ def BIC_score(y_true, y_pred, model=None, df=None):
     return aic - 2 * (p + 1) + math.log(n) * (p + 1)
 
 
-def classification_summary(*, y_true, y_pred):
+def classification_summary(y_true, y_pred):
     print("Accuracy:", accuracy_score(y_true, y_pred))
     print()
     print("Confusion matrix:")
