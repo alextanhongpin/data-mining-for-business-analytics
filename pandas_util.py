@@ -1,5 +1,14 @@
 import pandas as pd
+import os
 
+dirpath = "./datasets/dmba"
+
+def load_data(name: str):
+    fullpath = os.path.join(dirpath, name)
+    df = pd.read_csv(fullpath)
+    normalize_columns(df)
+    
+    return df
 
 def load_boston_housing():
     """
