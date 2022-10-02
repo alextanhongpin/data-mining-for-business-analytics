@@ -2,6 +2,7 @@ import math
 import numpy as np
 from sklearn.metrics import r2_score, accuracy_score, confusion_matrix, classification_report, mean_squared_error, mean_absolute_error
 
+
 def adjusted_r2_score(y_true, y_pred, model):
     """ calculate adjusted R2
     Input:
@@ -58,8 +59,8 @@ def classification_summary(y_true, y_pred):
     print()
     print("Classification report:")
     print(classification_report(y_true, y_pred))
-    
-   
+
+
 def regression_summary(y_true, y_pred):
     print('RMSE:', mean_squared_error(y_true, y_pred, squared=False))
     print('MAE:', mean_absolute_error(y_true, y_pred))

@@ -2,16 +2,19 @@ import pandas as pd
 import os
 import matplotlib.pylab as plt
 
-plt.rcParams["figure.figsize"] = (20, 10)
+# plt.rcParams["figure.figsize"] = (16, 10)
+plt.rcParams['figure.dpi'] = 96
 
 dirpath = "./datasets/dmba"
 
-def load_data(name: str):
+
+def load_data(name: str, **kwargs):
     fullpath = os.path.join(dirpath, name)
-    df = pd.read_csv(fullpath)
+    df = pd.read_csv(fullpath, **kwargs)
     normalize_columns(df)
-    
+
     return df
+
 
 def load_boston_housing():
     """
@@ -33,12 +36,14 @@ def load_boston_housing():
     df = pd.read_csv("./datasets/dmba/BostonHousing.csv")
     df = df.rename(columns={"CAT. MEDV": "CAT_MEDV"})
     normalize_columns(df)
-    
+
     return df
+
 
 def normalize_columns(df):
     df.columns = [col.strip().lower().replace(' ', '_') for col in df.columns]
-    
+
+
 # https://stackoverflow.com/questions/42699243/how-to-build-a-lift-chart-a-k-a-gains-chart-in-python
 def gains_chart(gains, color='C0', label=None, ax=None, figsize=None):
     """ Create a gains chart using predicted values
@@ -63,6 +68,7 @@ def gains_chart(gains, color='C0', label=None, ax=None, figsize=None):
     ax.set_xlabel('# records')
     ax.set_ylabel('# cumulative gains')
     return ax
+
 
 def lift_chart(predicted, title='Decile Lift Chart', labelBars=True, ax=None, figsize=None):
     """ Create a lift chart using predicted values
