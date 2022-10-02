@@ -1,5 +1,8 @@
 import pandas as pd
 import os
+import matplotlib.pylab as plt
+
+plt.rcParams["figure.figsize"] = (20, 10)
 
 dirpath = "./datasets/dmba"
 
