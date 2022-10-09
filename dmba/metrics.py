@@ -62,5 +62,5 @@ def classification_summary(y_true, y_pred):
 
 
 def regression_summary(y_true, y_pred):
-    print('RMSE:', mean_squared_error(y_true, y_pred, squared=False))
+    print('RMSE:', mean_squared_error(y_true, y_pred))
     print('MAE:', mean_absolute_error(y_true, y_pred))
